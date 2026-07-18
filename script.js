@@ -48,7 +48,18 @@ const form = document.querySelector('#request-form');
 const modal = document.querySelector('#request-result');
 const output = document.querySelector('#request-text');
 const copyButton = document.querySelector('#copy-request');
+const copyStatus = document.querySelector('#copy-status');
+const submitButton = document.querySelector('#submit-request');
+const submitButtonContent = submitButton.innerHTML;
 let previouslyFocused = null;
+let isSubmitting = false;
+
+function resetSubmitState() {
+  isSubmitting = false;
+  submitButton.disabled = false;
+  submitButton.removeAttribute('aria-busy');
+  submitButton.innerHTML = submitButtonContent;
+}
 
 function validateForm() {
   let valid = true;
@@ -66,15 +77,24 @@ function validateForm() {
 
 form.addEventListener('input', (event) => {
   const field = event.target.closest('.field');
-  if (field && event.target.value.trim()) field.classList.remove('invalid');
+  if (field && event.target.value.trim()) {
+    field.classList.remove('invalid');
+    event.target.setAttribute('aria-invalid', 'false');
+  }
 });
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
+  if (isSubmitting) return;
   if (!validateForm()) {
-    form.querySelector('.invalid input, .invalid textarea, .consent.invalid input')?.focus();
+    form.querySelector('.invalid input, .invalid textarea')?.focus();
     return;
   }
+
+  isSubmitting = true;
+  submitButton.disabled = true;
+  submitButton.setAttribute('aria-busy', 'true');
+  submitButton.textContent = 'Открываю Telegram…';
 
   const data = new FormData(form);
   const lines = [
@@ -89,13 +109,21 @@ form.addEventListener('submit', (event) => {
   ];
   output.value = lines.join('\n');
   const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(output.value)}`;
-  const telegramWindow = window.open(telegramUrl, '_blank');
+  let telegramWindow = null;
+  try {
+    telegramWindow = window.open(telegramUrl, '_blank');
+  } catch {
+    telegramWindow = null;
+  }
   if (telegramWindow) telegramWindow.opener = null;
   if (!telegramWindow) {
-    previouslyFocused = document.activeElement;
+    previouslyFocused = submitButton;
+    resetSubmitState();
     modal.hidden = false;
     document.body.classList.add('modal-open');
     modal.querySelector('.modal__close').focus();
+  } else {
+    window.setTimeout(resetSubmitState, 1200);
   }
 });
 
@@ -106,20 +134,24 @@ function closeModal() {
 }
 
 modal.querySelectorAll('[data-close-modal]').forEach((button) => button.addEventListener('click', closeModal));
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !modal.hidden) closeModal();
-});
 
 copyButton.addEventListener('click', async () => {
+  let copied = false;
   try {
     await navigator.clipboard.writeText(output.value);
+    copied = true;
   } catch {
     output.select();
-    document.execCommand('copy');
+    copied = document.execCommand('copy');
   }
   const oldText = copyButton.innerHTML;
-  copyButton.textContent = 'Текст скопирован';
-  setTimeout(() => { copyButton.innerHTML = oldText; }, 1800);
+  copyButton.disabled = true;
+  copyButton.textContent = copied ? 'Обращение скопировано' : 'Не удалось скопировать';
+  copyStatus.textContent = copied ? 'Обращение скопировано в буфер обмена.' : 'Не удалось скопировать обращение. Выделите текст вручную.';
+  setTimeout(() => {
+    copyButton.innerHTML = oldText;
+    copyButton.disabled = false;
+  }, 1800);
 });
 
 document.querySelector('#year').textContent = new Date().getFullYear();
@@ -179,6 +211,40 @@ function closeCaseModal() {
 }
 
 caseModal.querySelectorAll('[data-close-case]').forEach((button) => button.addEventListener('click', closeCaseModal));
+
+function trapFocus(event, activeModal) {
+  const focusable = [...activeModal.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+    .filter((element) => !element.hidden && element.offsetParent !== null);
+  if (!focusable.length) {
+    event.preventDefault();
+    activeModal.querySelector('.modal__card').focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !caseModal.hidden) closeCaseModal();
+  if (event.key === 'Escape') {
+    if (!caseModal.hidden) closeCaseModal();
+    else if (!modal.hidden) closeModal();
+    else if (nav.classList.contains('is-open')) {
+      nav.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Открыть меню');
+      navToggle.focus();
+    }
+    return;
+  }
+  if (event.key === 'Tab') {
+    if (!caseModal.hidden) trapFocus(event, caseModal);
+    else if (!modal.hidden) trapFocus(event, modal);
+  }
 });
