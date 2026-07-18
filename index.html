@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Помощь с документами, таблицами, презентациями, информацией и другими цифровыми задачами для частных клиентов и малого бизнеса.">
+  <meta name="theme-color" content="#f7f7f3">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Деловой помощник — цифровые задачи без лишней рутины">
+  <meta property="og:description" content="Документы, таблицы, презентации, информация и порядок в файлах — с понятными сроками и готовым результатом.">
+  <meta property="og:image" content="og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Деловой помощник — цифровые и организационные задачи</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v5h5M10 12h5M10 16h5"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M9 5v14"/></symbol>
+    <symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21l4-3 4 3M8 9h8M8 13h5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7h7l2 2h9v10H3z"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3M3 12h18M10 12v2h4v-2"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 4z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
+  </svg>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Деловой помощник — на главную">
+        <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Деловой помощник</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#process">Как работаю</a>
+        <a href="#cases">Примеры</a>
+        <a href="#faq">Вопросы</a>
+        <a class="nav__telegram" data-telegram-link hidden href="#">Telegram</a>
+        <a class="button button--small" href="#request">Описать задачу</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <div class="container hero__grid">
+        <div class="hero__content reveal">
+          <p class="eyebrow"><span></span> Цифровая и организационная помощь</p>
+          <h1>Возьму на себя ваши <em>цифровые задачи</em></h1>
+          <p class="hero__lead">Документы, таблицы, презентации, информация и порядок в файлах — для частных клиентов и малого бизнеса.</p>
+          <div class="hero__actions">
+            <a class="button" href="#request">Описать задачу <svg><use href="#i-arrow"/></svg></a>
+            <a class="button button--secondary" href="#services">Посмотреть услуги</a>
+          </div>
+          <p class="hero__note"><svg><use href="#i-message"/></svg> Можно написать своими словами — подробное ТЗ не требуется</p>
+        </div>
+
+        <div class="hero-board reveal" role="img" aria-label="Примеры выполненных задач">
+          <div class="hero-board__top"><span>Задачи</span><span class="status"><i></i> В работе</span></div>
+          <article class="task-card task-card--muted">
+            <span class="task-card__icon"><svg><use href="#i-table"/></svg></span>
+            <span><strong>Привести таблицу в порядок</strong><small>Структура, формулы, оформление</small></span>
+            <span class="task-card__progress">60%</span>
+          </article>
+          <article class="task-card task-card--done">
+            <span class="task-card__icon"><svg><use href="#i-doc"/></svg></span>
+            <span><strong>Оформить документ</strong><small>Готово в Word и PDF</small></span>
+            <span class="task-card__check"><svg><use href="#i-check"/></svg></span>
+          </article>
+          <article class="task-card task-card--done">
+            <span class="task-card__icon"><svg><use href="#i-folder"/></svg></span>
+            <span><strong>Рассортировать файлы</strong><small>Понятная система папок</small></span>
+            <span class="task-card__check"><svg><use href="#i-check"/></svg></span>
+          </article>
+          <div class="hero-board__footer"><span>Порядок вместо рутины</span><span>2 из 3 готовы</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft problem">
+      <div class="container split">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Когда это полезно</p>
+          <h2>Не обязательно разбираться во всём самостоятельно</h2>
+        </div>
+        <div class="problem__content reveal">
+          <p class="lead">Если задача отнимает время, кажется запутанной или просто давно откладывается — её можно передать мне.</p>
+          <ul class="check-list">
+            <li><svg><use href="#i-check"/></svg><span>Документ нужно оформить аккуратно и единообразно</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Таблица стала неудобной, громоздкой или непонятной</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Информацию приходится долго собирать вручную</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Файлы накопились без структуры, а рутина не заканчивается</span></li>
+          </ul>
+          <p class="note-box">Опишите желаемый результат. Я уточню детали и предложу понятный план работы.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div><p class="eyebrow">Направления помощи</p><h2>С чем можно обратиться</h2></div>
+          <p>От небольшой разовой задачи до регулярной цифровой поддержки.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-doc"/></svg></span><h3>Документы и PDF</h3><p>Оформление, редактирование, структурирование и перевод между форматами.</p></article>
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-table"/></svg></span><h3>Таблицы и данные</h3><p>Порядок в данных, формулы, сортировка и удобные шаблоны отчётов.</p></article>
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-slides"/></svg></span><h3>Презентации</h3><p>Логичная структура, аккуратное оформление и подготовка к показу.</p></article>
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-search"/></svg></span><h3>Поиск информации</h3><p>Сбор данных из открытых источников, проверка, группировка и представление в понятном виде.</p></article>
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-folder"/></svg></span><h3>Файлы и порядок</h3><p>Сортировка материалов, понятная структура папок и правила хранения.</p></article>
+          <article class="service-card reveal"><span class="icon"><svg><use href="#i-brief"/></svg></span><h3>Помощь бизнесу</h3><p>Каталоги, отчёты, карточки товаров, базы данных, шаблоны и повторяющиеся административные задачи.</p></article>
+          <article class="service-card service-card--wide reveal"><span class="icon"><svg><use href="#i-more"/></svg></span><div><h3>Нестандартная задача?</h3><p>Расскажите о ней своими словами. Я изучу запрос и честно сообщу, смогу ли помочь, а также назову срок и стоимость.</p></div><a href="#request" class="text-link">Обсудить задачу <svg><use href="#i-arrow"/></svg></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark examples" aria-labelledby="examples-title">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div><p class="eyebrow">Примеры обращений</p><h2 id="examples-title">Задачи, которые можно передать</h2></div>
+          <p>Это примеры ситуаций, а не ограниченный перечень услуг.</p>
+        </div>
+        <div class="examples-list reveal">
+          <span>Перенести данные с фотографий в таблицу</span>
+          <span>Оформить документ в едином стиле</span>
+          <span>Собрать список конкурентов</span>
+          <span>Подготовить презентацию</span>
+          <span>Рассортировать файлы</span>
+          <span>Оформить каталог или прайс</span>
+          <span>Создать шаблон отчёта</span>
+          <span>Заполнить карточки товаров</span>
+          <span>Подготовить структурированный PDF</span>
+        </div>
+        <div class="examples__cta reveal"><p>Не нашли свою задачу в списке?</p><a class="button button--light" href="#request">Расскажите о ней <svg><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-heading reveal"><p class="eyebrow">Понятный процесс</p><h2>Как проходит работа</h2><p class="section-intro">Вы заранее понимаете, что будет сделано, сколько это займёт и какой результат получите.</p></div>
+        <ol class="process-list">
+          <li class="reveal"><span>01</span><div><h3>Вы описываете задачу</h3><p>Отправляете материалы и рассказываете своими словами, что нужно получить.</p></div></li>
+          <li class="reveal"><span>02</span><div><h3>Я уточняю детали</h3><p>Задаю вопросы, проверяю исходные файлы и фиксирую ожидаемый результат.</p></div></li>
+          <li class="reveal"><span>03</span><div><h3>Согласовываем условия</h3><p>До начала работы называю точную стоимость, срок и формат готовых материалов.</p></div></li>
+          <li class="reveal"><span>04</span><div><h3>Выполняю работу</h3><p>Беру задачу на себя и при необходимости сообщаю о ходе выполнения.</p></div></li>
+          <li class="reveal"><span>05</span><div><h3>Вы получаете результат</h3><p>Проверяете материалы. В стоимость входят две небольшие серии правок в рамках задачи.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--soft benefits">
+      <div class="container split">
+        <div class="section-heading about reveal"><p class="eyebrow">Лично отвечаю за результат</p><h2>Вы работаете напрямую со мной</h2><p class="about__lead">Меня зовут Трифон. Я помогаю частным клиентам и малому бизнесу справляться с цифровыми и организационными задачами.</p><p>Сам принимаю обращения, уточняю детали и выполняю работу — без менеджеров и передачи задачи неизвестным исполнителям.</p><a class="text-link about__link" data-telegram-link hidden href="#">Написать мне в Telegram <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="benefits-grid">
+          <article class="benefit reveal"><svg><use href="#i-message"/></svg><h3>Без сложного ТЗ</h3><p>Можно объяснить задачу обычными словами — я помогу уточнить детали.</p></article>
+          <article class="benefit reveal"><svg><use href="#i-check"/></svg><h3>Условия заранее</h3><p>Стоимость, срок и результат согласовываются до начала работы.</p></article>
+          <article class="benefit reveal"><svg><use href="#i-lock"/></svg><h3>Аккуратно с файлами</h3><p>По просьбе материалы удаляются сразу, обычно — через 30 дней после завершения.</p></article>
+          <article class="benefit reveal"><svg><use href="#i-clock"/></svg><h3>Разово или регулярно</h3><p>Можно обратиться с одной небольшой задачей или договориться о постоянной помощи.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div><p class="eyebrow">Показываю подход</p><h2>Демонстрационные работы</h2></div>
+          <p>Учебные примеры, созданные специально для показа формата и качества работы.</p>
+        </div>
+        <div class="cases-grid">
+          <article class="case-card reveal"><div class="case-preview case-preview--table" aria-hidden="true"><div class="messy-lines"></div><svg><use href="#i-arrow"/></svg><div class="clean-table"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="case-card__body"><span>Демонстрационный проект</span><h3>Таблица: до и после</h3><p>Из разрозненных данных — в понятную структуру.</p><button class="case-link" type="button" data-case="table">Смотреть пример <svg><use href="#i-arrow"/></svg></button></div></article>
+          <article class="case-card reveal"><div class="case-preview case-preview--doc" aria-hidden="true"><div class="paper paper--old"></div><svg><use href="#i-arrow"/></svg><div class="paper paper--new"><i></i><i></i><i></i></div></div><div class="case-card__body"><span>Демонстрационный проект</span><h3>Оформление документа</h3><p>Иерархия, отступы и готовая версия в PDF.</p><button class="case-link" type="button" data-case="doc">Смотреть пример <svg><use href="#i-arrow"/></svg></button></div></article>
+          <article class="case-card reveal"><div class="case-preview case-preview--slides" aria-hidden="true"><div class="slide slide--old"></div><svg><use href="#i-arrow"/></svg><div class="slide slide--new"><b></b><i></i></div></div><div class="case-card__body"><span>Демонстрационный проект</span><h3>Переработка презентации</h3><p>Чёткая логика и аккуратные слайды.</p><button class="case-link" type="button" data-case="slides">Смотреть пример <svg><use href="#i-arrow"/></svg></button></div></article>
+          <article class="case-card reveal"><div class="case-preview case-preview--folders" aria-hidden="true"><div class="file-stack"><i></i><i></i><i></i></div><svg><use href="#i-arrow"/></svg><div class="folder-stack"><i></i><i></i><i></i></div></div><div class="case-card__body"><span>Демонстрационный проект</span><h3>Организация файлов</h3><p>Система, в которой легко найти нужное.</p><button class="case-link" type="button" data-case="folders">Смотреть пример <svg><use href="#i-arrow"/></svg></button></div></article>
+        </div>
+        <p class="cases-note reveal">Подробные версии кейсов будут добавлены после подготовки исходных и итоговых материалов.</p>
+      </div>
+    </section>
+
+    <section class="section price">
+      <div class="container">
+        <div class="price-card reveal">
+          <div><p class="eyebrow">Стоимость</p><h2>Сначала оценка — потом работа</h2></div>
+          <div><p>Стоимость зависит от объёма материалов, сложности и срока. До начала работы вы получите точную цену и срок — без неожиданных доплат за уже согласованный объём.</p><ul><li><svg><use href="#i-check"/></svg> Небольшие задачи можно оплатить после выполнения</li><li><svg><use href="#i-check"/></svg> Для крупных и срочных заказов — предоплата 30–50%</li><li><svg><use href="#i-check"/></svg> Новые задачи и дополнительный объём оцениваются отдельно</li></ul><a class="button" href="#request">Узнать стоимость <svg><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="faq">
+      <div class="container faq-layout">
+        <div class="section-heading reveal"><p class="eyebrow">Частые вопросы</p><h2>Коротко о главном</h2><p class="section-intro">Если вашего вопроса здесь нет, задайте его вместе с описанием задачи.</p></div>
+        <div class="faq-list reveal">
+          <details><summary>Можно ли обратиться с нестандартной задачей?<span></span></summary><p>Да. Опишите желаемый результат и приложите материалы. Я изучу запрос и честно сообщу, смогу ли помочь.</p></details>
+          <details><summary>Как рассчитывается стоимость?<span></span></summary><p>Учитываются объём исходных материалов, сложность, срок и формат результата. Точную сумму я называю до начала работы.</p></details>
+          <details><summary>Нужно ли составлять техническое задание?<span></span></summary><p>Нет. Достаточно описать задачу своими словами. Я задам уточняющие вопросы и помогу зафиксировать результат.</p></details>
+          <details><summary>Возможна ли срочная работа?<span></span></summary><p>Да, если в расписании есть свободное время. Срочность может увеличить стоимость, но это всегда согласовывается заранее.</p></details>
+          <details><summary>Сколько правок входит в стоимость?<span></span></summary><p>Две небольшие серии правок в рамках первоначально согласованной задачи. Полная смена задания или новый объём рассчитываются отдельно.</p></details>
+          <details><summary>Можно ли обращаться регулярно?<span></span></summary><p>Да. Для повторяющихся задач можно заранее договориться об удобном порядке передачи материалов и сроках.</p></details>
+          <details><summary>Как обрабатываются файлы?<span></span></summary><p>Обычно материалы хранятся до 30 дней после завершения заказа, затем могут быть удалены. По вашей просьбе я удалю их сразу после подтверждения результата.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section request" id="request">
+      <div class="container request__layout">
+        <div class="request__content reveal">
+          <p class="eyebrow">Начать просто</p>
+          <h2>Расскажите, с чем вам нужна помощь</h2>
+          <p>Опишите задачу своими словами. Я помогу уточнить детали, оценю возможность выполнения и предложу подходящий вариант решения.</p>
+          <div class="contact-note"><svg><use href="#i-message"/></svg><div><strong>Общение в переписке</strong><span>Основной канал связи — Telegram. Никаких неожиданных звонков.</span></div></div>
+        </div>
+        <form class="request-form reveal" id="request-form" novalidate>
+          <div class="field"><label for="name">Как к вам обращаться?</label><input type="text" id="name" name="name" autocomplete="name" placeholder="Ваше имя" required><small class="error">Укажите имя</small></div>
+          <div class="field"><label for="task">Что нужно сделать?</label><textarea id="task" name="task" rows="6" placeholder="Например: нужно привести в порядок таблицу, объединить данные и подготовить понятный отчёт…" required></textarea><small class="error">Коротко опишите задачу</small></div>
+          <div class="form-row"><div class="field"><label for="deadline">Желаемый срок</label><input type="text" id="deadline" name="deadline" placeholder="Например, до пятницы"></div><div class="field"><label for="files">Материалы</label><input type="text" id="files" name="files" placeholder="Есть / подготовлю / пока нет"></div></div>
+          <button class="button button--full" type="submit">Отправить в Telegram <svg><use href="#i-arrow"/></svg></button>
+          <p class="form-hint">Данные не отправляются на сервер сайта: после нажатия откроется переписка в Telegram.</p>
+        </form>
+      </div>
+      <div class="modal" id="request-result" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden>
+        <div class="modal__backdrop" data-close-modal></div>
+        <div class="modal__card">
+          <button class="modal__close" type="button" data-close-modal aria-label="Закрыть">×</button>
+          <span class="modal__icon"><svg><use href="#i-check"/></svg></span>
+          <h3 id="result-title">Обращение подготовлено</h3>
+          <p>Telegram-контакт пока не указан. Скопируйте обращение — после добавления username эта кнопка будет сразу открывать переписку.</p>
+          <textarea id="request-text" rows="9" readonly></textarea>
+          <button class="button button--full" type="button" id="copy-request"><svg><use href="#i-copy"/></svg> Скопировать текст</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <a class="brand brand--footer" href="#top"><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Деловой помощник</span></a>
+      <p>Цифровая и организационная помощь для частных клиентов и малого бизнеса.</p>
+      <div class="footer__links"><a href="#services">Услуги</a><a href="#process">Как работаю</a><a href="#cases">Примеры</a><a href="#faq">Вопросы</a><a data-telegram-link hidden href="#">Telegram</a></div>
+    </div>
+    <div class="container footer__bottom"><span>© <span id="year"></span> Деловой помощник</span><span>Работаю онлайн · Москва — по договорённости</span></div>
+  </footer>
+
+  <div class="modal case-modal" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden>
+    <div class="modal__backdrop" data-close-case></div>
+    <div class="modal__card case-modal__card">
+      <button class="modal__close" type="button" data-close-case aria-label="Закрыть">×</button>
+      <span class="case-modal__label">Демонстрационный проект</span>
+      <h3 id="case-title">Пример работы</h3>
+      <p id="case-description"></p>
+      <div class="case-detail" id="case-detail"></div>
+      <div class="case-result"><strong>Результат</strong><span id="case-result-text"></span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

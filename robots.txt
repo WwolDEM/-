@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# После подключения домена добавьте строку:
+# Sitemap: https://ваш-домен.ru/sitemap.xml

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F3"/>
+  <circle cx="1085" cy="80" r="235" fill="#E1EFEB"/>
+  <circle cx="105" cy="610" r="175" fill="#EDEBDD"/>
+  <g transform="translate(78 72)">
+    <rect width="58" height="58" rx="16" fill="#287A70"/>
+    <path d="M17 20h25M17 29h18M17 38h11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <text x="76" y="39" fill="#202522" font-family="Arial, sans-serif" font-size="30" font-weight="700">Деловой помощник</text>
+  </g>
+  <text x="78" y="254" fill="#202522" font-family="Arial, sans-serif" font-size="56" font-weight="700">Цифровые задачи</text>
+  <text x="78" y="321" fill="#287A70" font-family="Arial, sans-serif" font-size="56" font-weight="700">без лишней рутины</text>
+  <text x="82" y="387" fill="#626A65" font-family="Arial, sans-serif" font-size="22">Документы · Таблицы · Презентации</text>
+  <text x="82" y="420" fill="#626A65" font-family="Arial, sans-serif" font-size="22">Порядок в файлах · Готовый результат</text>
+  <g transform="translate(735 176)">
+    <rect width="385" height="318" rx="26" fill="#fff" stroke="#DDE1DC" stroke-width="2"/>
+    <text x="28" y="48" fill="#202522" font-family="Arial, sans-serif" font-size="18" font-weight="700">Задачи</text>
+    <g transform="translate(24 72)">
+      <rect width="337" height="64" rx="13" fill="#F7F8F6" stroke="#DDE1DC"/>
+      <rect x="14" y="14" width="36" height="36" rx="10" fill="#E1EFEB"/>
+      <text x="65" y="28" fill="#202522" font-family="Arial, sans-serif" font-size="14" font-weight="700">Оформить документ</text>
+      <text x="65" y="47" fill="#626A65" font-family="Arial, sans-serif" font-size="11">Готово в Word и PDF</text>
+      <circle cx="310" cy="32" r="14" fill="#287A70"/><path d="m303 32 5 5 9-11" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(24 146)">
+      <rect width="337" height="64" rx="13" fill="#F7F8F6" stroke="#DDE1DC"/>
+      <rect x="14" y="14" width="36" height="36" rx="10" fill="#E1EFEB"/>
+      <text x="65" y="28" fill="#202522" font-family="Arial, sans-serif" font-size="14" font-weight="700">Привести таблицу в порядок</text>
+      <text x="65" y="47" fill="#626A65" font-family="Arial, sans-serif" font-size="11">Структура и оформление</text>
+      <circle cx="310" cy="32" r="14" fill="#287A70"/><path d="m303 32 5 5 9-11" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(24 220)">
+      <rect width="337" height="64" rx="13" fill="#F7F8F6" stroke="#DDE1DC"/>
+      <rect x="14" y="14" width="36" height="36" rx="10" fill="#E1EFEB"/>
+      <text x="65" y="28" fill="#202522" font-family="Arial, sans-serif" font-size="14" font-weight="700">Рассортировать файлы</text>
+      <text x="65" y="47" fill="#626A65" font-family="Arial, sans-serif" font-size="11">Понятная система папок</text>
+      <circle cx="310" cy="32" r="14" fill="#287A70"/><path d="m303 32 5 5 9-11" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="82" y="558" fill="#287A70" font-family="Arial, sans-serif" font-size="22" font-weight="700">@Trifon_Koss_W</text>
+</svg>
