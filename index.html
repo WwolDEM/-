@@ -9,13 +9,15 @@
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Деловой помощник — цифровые задачи без лишней рутины">
   <meta property="og:description" content="Документы, таблицы, презентации, информация и порядок в файлах — с понятными сроками и готовым результатом.">
-  <meta property="og:image" content="og-image.png">
+  <meta property="og:url" content="https://delovoi-pomoshchnik.ru/">
+  <meta property="og:image" content="https://delovoi-pomoshchnik.ru/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Деловой помощник — цифровые задачи без лишней рутины">
   <meta name="robots" content="index, follow">
   <meta name="twitter:card" content="summary_large_image">
   <title>Деловой помощник — цифровые и организационные задачи</title>
+  <link rel="canonical" href="https://delovoi-pomoshchnik.ru/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -234,6 +236,7 @@
           <div class="form-row"><div class="field"><label for="deadline">Желаемый срок</label><input type="text" id="deadline" name="deadline" maxlength="120" placeholder="Например, до пятницы"></div><div class="field"><label for="files">Материалы</label><input type="text" id="files" name="files" maxlength="120" placeholder="Есть / подготовлю / пока нет"></div></div>
           <button class="button button--full" type="submit" id="submit-request">Отправить в Telegram <svg><use href="#i-arrow"/></svg></button>
           <p class="form-hint">Данные не отправляются на сервер сайта: после нажатия откроется переписка в Telegram.</p>
+          <p class="form-policy">Нажимая кнопку, вы подтверждаете, что ознакомились с <a href="privacy-policy.html">Политикой конфиденциальности</a>.</p>
         </form>
         <noscript><p class="noscript-note">Для автоматической подготовки сообщения нужен JavaScript. Вы можете <a href="https://t.me/Trifon_Koss_W">написать Трифону напрямую в Telegram</a>.</p></noscript>
       </div>
@@ -258,7 +261,7 @@
       <p>Цифровая и организационная помощь для частных клиентов и малого бизнеса.</p>
       <div class="footer__links"><a href="#services">Услуги</a><a href="#process">Как работаю</a><a href="#cases">Примеры</a><a href="#faq">Вопросы</a><a data-telegram-link href="https://t.me/Trifon_Koss_W">Telegram</a></div>
     </div>
-    <div class="container footer__bottom"><span>© <span id="year"></span> Деловой помощник</span><span>Работаю онлайн · Москва — по договорённости</span><span class="footer__policy-note">Политика конфиденциальности будет добавлена до публичного запуска</span></div>
+    <div class="container footer__bottom"><span>© <span id="year"></span> Деловой помощник</span><span>Работаю онлайн · Москва — по договорённости</span><a class="footer__policy-note" href="privacy-policy.html">Политика конфиденциальности</a></div>
   </footer>
 
   <div class="modal case-modal" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-title" aria-describedby="case-description" hidden>
