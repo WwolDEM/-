@@ -43,6 +43,7 @@ svg { width: 1.25em; height: 1.25em; fill: none; stroke: currentColor; stroke-li
 .nav { display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 500; }
 .nav > a:not(.button) { color: var(--muted); transition: color .2s; }
 .nav > a:hover { color: var(--accent); }
+.nav > a[aria-current="page"] { color: var(--accent-dark); }
 .nav__telegram { color: var(--accent) !important; }
 .nav-toggle { display: none; width: 42px; height: 42px; padding: 0; border: 0; border-radius: 10px; background: var(--surface); }
 .nav-toggle span { position: absolute; width: 18px; height: 2px; margin-left: -9px; background: var(--text); transition: .25s; }
@@ -258,6 +259,29 @@ p { margin: 0; }
 .footer a.footer__policy-note { color: #c1c9c6; text-decoration: underline; text-decoration-color: rgba(193,201,198,.45); text-underline-offset: 3px; }
 .footer a.footer__policy-note:hover { color: #fff; }
 
+/* Страница услуг и цен */
+.prices-page { background: var(--bg); }
+.prices-hero { padding: 82px 0 50px; }
+.prices-hero__inner { max-width: 850px; }
+.prices-hero h1 { max-width: 800px; font-size: clamp(44px, 5.1vw, 68px); }
+.prices-hero__lead { max-width: 720px; margin-top: 24px; color: var(--muted); font-size: 19px; line-height: 1.65; }
+.prices-section { padding: 36px 0 100px; }
+.prices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pricing-card { display: flex; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.pricing-card__icon { width: 49px; height: 49px; display: grid; place-items: center; margin-bottom: 25px; border-radius: 13px; color: var(--accent); background: var(--accent-soft); }
+.pricing-card h2 { margin-bottom: 22px; font-size: 26px; letter-spacing: -.03em; }
+.pricing-list { display: grid; gap: 0; margin: 0 0 28px; padding: 0; list-style: none; }
+.pricing-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: start; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+.pricing-list li:first-child { border-top: 1px solid var(--line); }
+.pricing-list span:first-child { color: #4f5853; }
+.pricing-list strong { color: var(--text); font-weight: 600; white-space: nowrap; }
+.pricing-card .button { align-self: flex-start; margin-top: auto; }
+.prices-note { max-width: 850px; margin: 25px auto 0; color: var(--muted); font-size: 15px; line-height: 1.65; text-align: center; }
+.prices-cta { margin-top: 64px; padding: 46px; border-radius: var(--radius-lg); background: var(--accent-soft); text-align: center; }
+.prices-cta h2 { font-size: clamp(31px, 4vw, 44px); }
+.prices-cta p { max-width: 650px; margin: 18px auto 26px; color: #4e625d; font-size: 17px; line-height: 1.65; }
+.prices-cta .button { margin-inline: auto; }
+
 /* Страница политики */
 .policy-page { background: var(--bg); }
 .policy-header__actions { display: flex; align-items: center; gap: 12px; }
@@ -306,6 +330,7 @@ p { margin: 0; }
   .price-card { grid-template-columns: 1fr; gap: 35px; }
   .policy-layout { grid-template-columns: 1fr; gap: 42px; }
   .policy-toc { position: static; }
+  .prices-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 700px) {
@@ -364,6 +389,18 @@ p { margin: 0; }
   .policy-layout { padding: 25px 0 70px; }
   .policy-toc { padding: 19px; }
   .policy-content section { padding-bottom: 29px; margin-bottom: 29px; }
+  .prices-hero { padding: 58px 0 30px; }
+  .prices-hero h1 { font-size: clamp(39px, 12vw, 52px); }
+  .prices-hero__lead { font-size: 17px; }
+  .prices-section { padding: 30px 0 70px; }
+  .pricing-card { padding: 24px 20px; }
+  .pricing-card h2 { font-size: 23px; }
+  .pricing-list li { grid-template-columns: 1fr; gap: 3px; padding: 12px 0; }
+  .pricing-list strong { white-space: normal; }
+  .pricing-card .button { width: 100%; }
+  .prices-note { text-align: left; }
+  .prices-cta { margin-top: 45px; padding: 34px 20px; text-align: left; }
+  .prices-cta .button { width: 100%; font-size: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
