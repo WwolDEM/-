@@ -248,3 +248,231 @@ document.addEventListener('keydown', (event) => {
     else if (!modal.hidden) trapFocus(event, modal);
   }
 });
+
+const mobileCta = document.querySelector('#mobile-cta');
+const requestSection = document.querySelector('#request');
+if (mobileCta && requestSection) {
+  let requestVisible = false;
+  const updateMobileCta = () => {
+    mobileCta.classList.toggle('is-hidden', window.scrollY < 480 || requestVisible);
+  };
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      requestVisible = entry.isIntersecting;
+      updateMobileCta();
+    }, { threshold: 0.05 }).observe(requestSection);
+  }
+  updateMobileCta();
+  window.addEventListener('scroll', updateMobileCta, { passive: true });
+}
+
+/* ---------- Склонение и форматирование ---------- */
+const plural = (n, forms) => {
+  const a = Math.abs(n) % 100;
+  const b = a % 10;
+  if (a > 10 && a < 20) return forms[2];
+  if (b > 1 && b < 5) return forms[1];
+  if (b === 1) return forms[0];
+  return forms[2];
+};
+const formatRub = (n) => n.toLocaleString('ru-RU').replace(/ |,/g, ' ');
+
+/* ---------- Логотип: покачивание по клику ---------- */
+document.querySelectorAll('.brand').forEach((brand) => {
+  const logo = brand.querySelector('.brand__logo');
+  if (!logo) return;
+  brand.addEventListener('click', (event) => {
+    const href = brand.getAttribute('href');
+    if (href === '#top') {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    }
+    logo.classList.remove('is-wiggle');
+    void logo.getBoundingClientRect();
+    logo.classList.add('is-wiggle');
+  });
+  logo.addEventListener('animationend', () => logo.classList.remove('is-wiggle'));
+});
+
+/* ---------- Счётчик рутины ---------- */
+const routine = document.querySelector('[data-routine]');
+if (routine) {
+  const range = routine.querySelector('input[type="range"]');
+  const value = routine.querySelector('[data-routine-value]');
+  const result = routine.querySelector('[data-routine-result]');
+  const updateRoutine = () => {
+    const perWeek = Number(range.value);
+    const perYear = perWeek * 52;
+    const days = Math.round(perYear / 8);
+    value.textContent = `${perWeek} ч`;
+    range.style.setProperty('--fill', `${((perWeek - range.min) / (range.max - range.min)) * 100}%`);
+    result.innerHTML = `Это около <strong>${perYear} ${plural(perYear, ['часа', 'часов', 'часов'])}</strong> в год — примерно <strong>${days} ${plural(days, ['рабочий день', 'рабочих дня', 'рабочих дней'])}</strong>.`;
+  };
+  range.addEventListener('input', updateRoutine);
+  updateRoutine();
+}
+
+/* ---------- Калькулятор стоимости ---------- */
+const calc = document.querySelector('[data-calc]');
+if (calc) {
+  const boxes = [...calc.querySelectorAll('input[type="checkbox"]')];
+  const sumEl = calc.querySelector('[data-calc-sum]');
+  const send = calc.querySelector('[data-calc-send]');
+  const updateCalc = () => {
+    const picked = boxes.filter((box) => box.checked);
+    const total = picked.reduce((sum, box) => sum + Number(box.dataset.price), 0);
+    if (!picked.length) {
+      sumEl.textContent = 'Выберите задачи';
+      sumEl.classList.add('is-empty');
+      send.setAttribute('aria-disabled', 'true');
+      send.href = `https://t.me/${TELEGRAM_USERNAME}`;
+      return;
+    }
+    sumEl.textContent = `от ${formatRub(total)} ₽`;
+    sumEl.classList.remove('is-empty', 'is-bump');
+    void sumEl.offsetWidth;
+    sumEl.classList.add('is-bump');
+    send.setAttribute('aria-disabled', 'false');
+    const message = [
+      'Здравствуйте! Посчитал(а) на сайте примерную стоимость.',
+      '',
+      'Что нужно:',
+      ...picked.map((box) => `— ${box.value}`),
+      '',
+      `Ориентир по прайсу: от ${formatRub(total)} ₽`,
+      'Хочу уточнить точную цену и срок.'
+    ].join('\n');
+    send.href = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
+  };
+  boxes.forEach((box) => box.addEventListener('change', updateCalc));
+  updateCalc();
+}
+
+/* ---------- Живая доска задач ---------- */
+const board = document.querySelector('[data-live-board]');
+if (board && !reducedMotion) {
+  const list = board.querySelector('[data-board-list]');
+  const count = board.querySelector('[data-board-count]');
+  const pool = [
+    ['i-slides', 'Подготовить презентацию', 'Единый стиль и логика слайдов'],
+    ['i-table', 'Из фотографий в таблицу', 'Данные перенесены и проверены'],
+    ['i-search', 'Собрать список конкурентов', 'Открытые источники, сравнение'],
+    ['i-brief', 'Оформить прайс', 'Аккуратный PDF для клиентов'],
+    ['i-doc', 'Оформить документ', 'Готово в Word и PDF'],
+    ['i-folder', 'Рассортировать файлы', 'Понятная система папок'],
+    ['i-table', 'Привести таблицу в порядок', 'Структура, формулы, оформление']
+  ];
+  let poolIndex = 0;
+  let visible = true;
+  let slot = 92;
+  const GAP = 10;
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const nextFrame = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  const whenVisible = async () => { while (!visible || document.hidden) await sleep(300); };
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }).observe(board);
+  }
+
+  // Переводим список в режим абсолютного позиционирования: дальше двигаем только transform и opacity
+  let cards = [...list.querySelectorAll('.task-card')];
+  const place = (card, index, extra = '') => {
+    card.style.transform = `translate3d(0, ${index * slot}px, 0)${extra}`;
+  };
+  const measure = () => {
+    list.classList.remove('is-live');
+    cards.forEach((card) => { card.style.transform = ''; });
+    slot = cards[0].offsetHeight + GAP;
+    list.style.setProperty('--list-h', `${slot * 3 - GAP}px`);
+    list.classList.add('is-live');
+    cards.forEach((card, index) => place(card, index));
+  };
+  measure();
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(measure, 150);
+  });
+
+  const progressParts = (card) => ({
+    label: card.querySelector('.task-card__progress'),
+    bar: card.querySelector('.task-card__bar')
+  });
+
+  // Полоса двигается CSS-переходом (на видеокарте), цифры обновляются только при смене значения
+  const runProgress = (card, from, duration) => new Promise((resolve) => {
+    const { label, bar } = progressParts(card);
+    bar.style.transition = 'none';
+    bar.style.setProperty('--s', from / 100);
+    void bar.offsetWidth;
+    bar.style.transition = `transform ${duration}ms cubic-bezier(.33,0,.25,1)`;
+    bar.style.setProperty('--s', 1);
+    const start = performance.now();
+    let shown = -1;
+    const step = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 2.2);
+      const value = Math.round(from + (100 - from) * eased);
+      if (value !== shown) { label.textContent = `${value}%`; shown = value; }
+      if (t < 1) requestAnimationFrame(step); else resolve();
+    };
+    requestAnimationFrame(step);
+  });
+
+  const markDone = (card) => {
+    const { label, bar } = progressParts(card);
+    label.remove();
+    bar.remove();
+    card.classList.replace('task-card--muted', 'task-card--done');
+    card.insertAdjacentHTML('beforeend', '<span class="task-card__check"><svg><use href="#i-check"/></svg></span>');
+  };
+
+  const makeCard = ([icon, title, note]) => {
+    const card = document.createElement('article');
+    card.className = 'task-card task-card--muted';
+    card.innerHTML = `<span class="task-card__icon"><svg><use href="#${icon}"/></svg></span><span><strong>${title}</strong><small>${note}</small></span><span class="task-card__progress">0%</span><span class="task-card__bar" style="--s:0"></span>`;
+    return card;
+  };
+
+  const run = async () => {
+    let active = cards[0];
+    active.insertAdjacentHTML('beforeend', '<span class="task-card__bar"></span>');
+    progressParts(active).bar.style.setProperty('--s', .6);
+    await sleep(1400);
+    let from = 60;
+    for (;;) {
+      await whenVisible();
+      await runProgress(active, from, from === 0 ? 3400 : 1700);
+      markDone(active);
+      count.textContent = '3 из 3 готово';
+      await sleep(1800);
+      await whenVisible();
+
+      // Новая карточка появляется сверху, остальные съезжают вниз, нижняя растворяется
+      const next = makeCard(pool[poolIndex++ % pool.length]);
+      next.style.transition = 'none';
+      next.style.opacity = '0';
+      place(next, 0, ' scale(.96)');
+      next.style.transform = `translate3d(0, -14px, 0) scale(.96)`;
+      list.prepend(next);
+      await nextFrame();
+      next.style.transition = '';
+
+      const leaving = cards[cards.length - 1];
+      cards = [next, ...cards.slice(0, -1)];
+      cards.forEach((card, index) => place(card, index));
+      next.style.opacity = '1';
+      leaving.style.zIndex = '0';
+      leaving.style.opacity = '0';
+      leaving.style.transform = `translate3d(0, ${2 * slot + 16}px, 0) scale(.96)`;
+      setTimeout(() => leaving.remove(), 750);
+
+      count.textContent = '2 из 3 готово';
+      active = next;
+      from = 0;
+      await sleep(900);
+    }
+  };
+  run();
+}

@@ -19,12 +19,30 @@
   <title>Деловой помощник — цифровые и организационные задачи</title>
   <link rel="canonical" href="https://delovoi-pomoshchnik.ru/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Деловой помощник",
+    "url": "https://delovoi-pomoshchnik.ru/",
+    "logo": "https://delovoi-pomoshchnik.ru/icon-512.png",
+    "image": "https://delovoi-pomoshchnik.ru/og-image.png",
+    "description": "Цифровая и организационная помощь частным клиентам и малому бизнесу: документы, таблицы, презентации, поиск информации и порядок в файлах.",
+    "areaServed": "RU",
+    "address": { "@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU" },
+    "priceRange": "от 500 ₽",
+    "sameAs": ["https://t.me/Trifon_Koss_W"]
+  }
+  </script>
 </head>
-<body>
+<body class="has-mobile-cta">
   <a class="skip-link" href="#main">Перейти к содержанию</a>
 
   <svg class="svg-sprite" aria-hidden="true">
@@ -46,7 +64,7 @@
   <header class="header" id="top">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="Деловой помощник — на главную">
-        <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <svg class="brand__logo" viewBox="15 3 42 68" aria-hidden="true" focusable="false"><path d="M30 44 V28 a8 8 0 0 1 16 0 V54 a14 14 0 0 1 -28 0 V24 a18 18 0 0 1 36 0" stroke-width="5.5" pathLength="1"/><circle class="brand__dot" cx="38" cy="44" r="4.5"/></svg>
         <span>Деловой помощник</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню">
@@ -76,10 +94,16 @@
             <a class="button button--secondary" href="#services">Посмотреть услуги</a>
           </div>
           <p class="hero__note"><svg><use href="#i-message"/></svg> Можно написать своими словами — подробное ТЗ не требуется</p>
+          <ul class="hero__facts" aria-label="Условия работы">
+            <li><svg><use href="#i-check"/></svg>Оценка бесплатно</li>
+            <li><svg><use href="#i-check"/></svg>Цена — до начала работы</li>
+            <li><svg><use href="#i-check"/></svg>Небольшие задачи — оплата после</li>
+          </ul>
         </div>
 
-        <div class="hero-board reveal" role="img" aria-label="Примеры выполненных задач">
+        <div class="hero-board reveal" role="img" aria-label="Примеры выполненных задач" data-live-board>
           <div class="hero-board__top"><span>Задачи</span></div>
+          <div class="hero-board__list" data-board-list>
           <article class="task-card task-card--muted">
             <span class="task-card__icon"><svg><use href="#i-table"/></svg></span>
             <span><strong>Привести таблицу в порядок</strong><small>Структура, формулы, оформление</small></span>
@@ -95,7 +119,8 @@
             <span><strong>Рассортировать файлы</strong><small>Понятная система папок</small></span>
             <span class="task-card__check"><svg><use href="#i-check"/></svg></span>
           </article>
-          <div class="hero-board__footer"><span>Порядок вместо рутины</span><span>2 из 3 готово</span></div>
+          </div>
+          <div class="hero-board__footer"><span>Порядок вместо рутины</span><span data-board-count>2 из 3 готово</span></div>
         </div>
       </div>
     </section>
@@ -109,11 +134,16 @@
         <div class="problem__content reveal">
           <p class="lead">Если задача отнимает время, кажется запутанной или просто давно откладывается — её можно передать мне.</p>
           <ul class="check-list">
-            <li><svg><use href="#i-check"/></svg><span>Нужно аккуратно оформить документ.</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Документ нужно оформить аккуратно и единообразно</span></li>
             <li><svg><use href="#i-check"/></svg><span>Таблица стала неудобной, громоздкой или непонятной</span></li>
             <li><svg><use href="#i-check"/></svg><span>Информацию приходится долго собирать вручную</span></li>
             <li><svg><use href="#i-check"/></svg><span>Файлы накопились без структуры, а рутина не заканчивается</span></li>
           </ul>
+          <div class="routine-meter" data-routine>
+            <label for="routine-hours">Сколько часов в неделю уходит на такую рутину?</label>
+            <div class="routine-meter__row"><input type="range" id="routine-hours" min="1" max="20" step="1" value="4"><output for="routine-hours" data-routine-value>4 ч</output></div>
+            <p class="routine-meter__result" aria-live="polite" data-routine-result>Это около <strong>208 часов</strong> в год — примерно <strong>26 рабочих дней</strong>.</p>
+          </div>
           <p class="note-box">Опишите желаемый результат. Я уточню детали и предложу понятный план работы.</p>
         </div>
       </div>
@@ -203,7 +233,39 @@
       <div class="container">
         <div class="price-card reveal">
           <div><p class="eyebrow">Стоимость</p><h2>Сначала оценка — потом работа</h2></div>
-          <div><p>Стоимость зависит от объёма и сложности задачи. До начала работы вы получите точную цену и срок. Оценка задачи бесплатна.</p><ul><li><svg><use href="#i-check"/></svg> Небольшие задачи можно оплатить после выполнения</li><li><svg><use href="#i-check"/></svg> Для крупных и срочных заказов — предоплата 30–50%</li><li><svg><use href="#i-check"/></svg> Новые задачи и дополнительный объём оцениваются отдельно</li></ul><a class="button" href="#request">Узнать стоимость <svg><use href="#i-arrow"/></svg></a></div>
+          <div><p>Стоимость зависит от объёма и сложности задачи. До начала работы вы получите точную цену и срок. Оценка задачи бесплатна.</p><ul><li><svg><use href="#i-check"/></svg> Небольшие задачи можно оплатить после выполнения</li><li><svg><use href="#i-check"/></svg> Для крупных и срочных заказов — предоплата 30–50%</li><li><svg><use href="#i-check"/></svg> Новые задачи и дополнительный объём оцениваются отдельно</li></ul><div class="price-card__actions"><a class="button" href="#request">Узнать стоимость <svg><use href="#i-arrow"/></svg></a><a class="text-link" href="prices.html">Все услуги и цены <svg><use href="#i-arrow"/></svg></a></div></div>
+          <div class="calc price-card__wide" data-calc>
+            <div class="calc__head"><h3>Прикинуть стоимость</h3><p>Отметьте, что нужно сделать, — посчитаю стартовую сумму по прайсу.</p></div>
+            <div class="calc__groups">
+              <fieldset class="calc__group"><legend>Презентации</legend>
+                <label class="calc-chip"><input type="checkbox" value="Оформление готовой презентации" data-price="1500"><span>Оформление готовой презентации<small>от 1 500 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Создание презентации с нуля" data-price="2000"><span>Создание презентации с нуля<small>от 2 000 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Схемы и инфографика" data-price="500"><span>Схемы и инфографика<small>от 500 ₽</small></span></label>
+              </fieldset>
+              <fieldset class="calc__group"><legend>Документы Word и PDF</legend>
+                <label class="calc-chip"><input type="checkbox" value="Оформление документа" data-price="800"><span>Оформление документа<small>от 800 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Редактирование текста" data-price="600"><span>Редактирование текста<small>от 600 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Набор текста" data-price="900"><span>Набор текста<small>от 900 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Вёрстка документа" data-price="1500"><span>Вёрстка документа<small>от 1 500 ₽</small></span></label>
+              </fieldset>
+              <fieldset class="calc__group"><legend>Excel и таблицы</legend>
+                <label class="calc-chip"><input type="checkbox" value="Оформление таблицы" data-price="1500"><span>Оформление таблицы<small>от 1 500 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Формулы и расчёты" data-price="1000"><span>Формулы и расчёты<small>от 1 000 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Перенос данных в таблицу" data-price="700"><span>Перенос данных в таблицу<small>от 700 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Очистка и структурирование данных" data-price="1000"><span>Очистка и структурирование данных<small>от 1 000 ₽</small></span></label>
+              </fieldset>
+              <fieldset class="calc__group"><legend>Работа с файлами</legend>
+                <label class="calc-chip"><input type="checkbox" value="Объединение и разделение PDF" data-price="500"><span>Объединение и разделение PDF<small>от 500 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Изменение формата файла" data-price="500"><span>Изменение формата файла<small>от 500 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Систематизация и сортировка файлов" data-price="800"><span>Систематизация и сортировка файлов<small>от 800 ₽</small></span></label>
+                <label class="calc-chip"><input type="checkbox" value="Подготовка файлов к отправке или печати" data-price="700"><span>Подготовка файлов к отправке или печати<small>от 700 ₽</small></span></label>
+              </fieldset>
+            </div>
+            <div class="calc__result">
+              <div><span class="calc__label">Ориентир</span><strong class="calc__sum" aria-live="polite" data-calc-sum>Выберите задачи</strong><small>Точную цену назову, когда посмотрю материалы. Срочность обсуждается отдельно.</small></div>
+              <a class="button" data-calc-send href="https://t.me/Trifon_Koss_W" target="_blank" rel="noopener noreferrer" aria-disabled="true">Обсудить в Telegram <svg><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -258,7 +320,7 @@
 
   <footer class="footer">
     <div class="container footer__top">
-      <a class="brand brand--footer" href="#top"><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Деловой помощник</span></a>
+      <a class="brand brand--footer" href="#top"><svg class="brand__logo" viewBox="15 3 42 68" aria-hidden="true" focusable="false"><path d="M30 44 V28 a8 8 0 0 1 16 0 V54 a14 14 0 0 1 -28 0 V24 a18 18 0 0 1 36 0" stroke-width="5.5" pathLength="1"/><circle class="brand__dot" cx="38" cy="44" r="4.5"/></svg><span>Деловой помощник</span></a>
       <p>Цифровая и организационная помощь для частных клиентов и малого бизнеса.</p>
       <div class="footer__links"><a href="#services">Услуги</a><a href="prices.html">Цены</a><a href="#process">Как работаю</a><a href="#cases">Примеры</a><a href="#faq">Вопросы</a><a data-telegram-link href="https://t.me/Trifon_Koss_W">Telegram</a></div>
     </div>
@@ -275,6 +337,11 @@
       <div class="case-detail" id="case-detail"></div>
       <div class="case-result"><strong>Результат</strong><span id="case-result-text"></span></div>
     </div>
+  </div>
+
+  <div class="mobile-cta is-hidden" id="mobile-cta">
+    <a class="button" href="#request">Описать задачу</a>
+    <a class="button button--secondary" data-telegram-link href="https://t.me/Trifon_Koss_W">Telegram</a>
   </div>
 
   <script src="script.js"></script>
